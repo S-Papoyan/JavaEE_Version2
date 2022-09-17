@@ -39,4 +39,24 @@ public class UserRepository {
         }
         return verification_code;
     }
+
+    public static boolean checkVerify(String email, String verifyCode) {
+        Connection connection = MyDataSource.getConnection();
+        String verification_code = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select verification_code from users where email = ?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                verification_code = resultSet.getString("verification_code");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        if (verification_code != null && verification_code.equals(verifyCode)) {
+            return true;
+        }
+        return false;
+    }
 }

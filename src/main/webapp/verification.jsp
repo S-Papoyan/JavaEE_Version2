@@ -13,21 +13,29 @@
 </head>
 <body>
 <%
+    boolean count = false;
     String email = request.getParameter("email");
     String verifyCode = UserRepository.verifyCode(email);
     PrintWriter writer = response.getWriter();
-    writer.println(verifyCode);
+    if (count) {
+        String verify = request.getParameter("verify");
+        if (!verify.equals(verifyCode)) {
+            writer.write("Wrong verify");
+        }
+    }
+    if (verifyCode != null) {
+        writer.println(verifyCode);
+    } else {
+        writer.write("Wrong email");
+    }
 
 %>
 <form method="post" action="/verification">
-    <h1>Verification Page</h1><br><br><br><br>
-    <h1>verifyCode</h1><br><br><br><br>
+    <h1>verifyCode</h1><br><br>
     email: <input type="text" name="email"><br><br>
     Verify_code: <input type="text" name="verify"><br><br>
     <input type="submit" name="submit">
 
 </form>
-
-
 </body>
 </html>

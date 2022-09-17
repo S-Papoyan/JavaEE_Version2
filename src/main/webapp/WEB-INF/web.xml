@@ -7,8 +7,22 @@
         <servlet-name>RegistrationServlet</servlet-name>
         <servlet-class>com.digi.controller.RegistrationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerificationServlet</servlet-name>
+        <servlet-class>com.digi.controller.VerificationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VerificationServlet</servlet-name>
+        <url-pattern>/verification</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>homePage.jsp</welcome-file>
+    </welcome-file-list>
+
+
 </web-app>
