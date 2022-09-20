@@ -14,7 +14,7 @@
 
 <form method="post" action="/login">
     <h1>Home Page Lessons</h1>
-    username: <input type="text" name="username"><br><br>
+    email: <input type="text" name="email"><br><br>
     password: <input type="text" name="password"><br><br>
     <input type="submit" name="submit">
 
