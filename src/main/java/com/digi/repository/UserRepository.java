@@ -87,7 +87,7 @@ public class UserRepository {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from users where email = ?");
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String first_name = resultSet.getString("first_name");
                 String last_name = resultSet.getString("last_name");
                 sj.add(first_name);
@@ -97,5 +97,21 @@ public class UserRepository {
             throw new RuntimeException(e);
         }
         return sj.toString();
+    }
+
+    public static Integer getByEmail(String email) {
+        Connection connection = MyDataSource.getConnection();
+        Integer id = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select id from users where email = ?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                id = resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
     }
 }

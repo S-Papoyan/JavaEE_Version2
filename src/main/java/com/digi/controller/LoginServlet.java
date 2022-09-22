@@ -10,12 +10,16 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        session.setAttribute("user", email);
         boolean login = UserRepository.login(email, password);
 
         if (login) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
+
         } else {
             response.getWriter().println("Wrong email or password");
         }

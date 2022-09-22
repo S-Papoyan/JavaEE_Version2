@@ -15,6 +15,14 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.digi.controller.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddressServlet</servlet-name>
+        <servlet-class>com.digi.controller.AddressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddressServlet</servlet-name>
+        <url-pattern>/address</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -31,6 +39,4 @@
     <welcome-file-list>
         <welcome-file>homePage.jsp</welcome-file>
     </welcome-file-list>
-
-
 </web-app>

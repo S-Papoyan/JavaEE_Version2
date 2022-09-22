@@ -12,11 +12,13 @@
     <title>MyPage</title>
 </head>
 <%
-    String email = request.getParameter("email");
-    String info = UserRepository.getInfo(email);
+    HttpSession session1 = request.getSession();
+    Object user = session1.getAttribute("user");
+    String info = UserRepository.getInfo(user.toString());
     response.getWriter().write(info);
 %>
 <body>
-
+<br><br>
+<a href="address.jsp">add_address</a>
 </body>
 </html>
