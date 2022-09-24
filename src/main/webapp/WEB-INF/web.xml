@@ -19,6 +19,14 @@
         <servlet-name>AddressServlet</servlet-name>
         <servlet-class>com.digi.controller.AddressServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InputEmailServlet</servlet-name>
+        <servlet-class>com.digi.controller.InputEmailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InputEmailServlet</servlet-name>
+        <url-pattern>/inputEmail</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AddressServlet</servlet-name>
         <url-pattern>/address</url-pattern>

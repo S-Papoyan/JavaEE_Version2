@@ -14,10 +14,11 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        session.setAttribute("user", email);
+
         boolean login = UserRepository.login(email, password);
 
         if (login) {
+            session.setAttribute("user", email);
             request.getRequestDispatcher("/login.jsp").forward(request, response);
 
         } else {

@@ -114,4 +114,22 @@ public class UserRepository {
         }
         return id;
     }
+
+    public static boolean forgetPassword(String password, String email) {
+
+        Connection connection = MyDataSource.getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET" +
+                    " password = ? where email = ?");
+            preparedStatement.setString(1, password);
+            preparedStatement.setString(2, email);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       return false;
+    }
 }
+
+
