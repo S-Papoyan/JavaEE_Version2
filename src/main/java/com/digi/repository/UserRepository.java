@@ -1,5 +1,6 @@
 package com.digi.repository;
 
+import com.digi.model.User;
 import com.digi.util.GenerateTokens;
 import com.digi.util.MyDataSource;
 
@@ -129,6 +130,28 @@ public class UserRepository {
             e.printStackTrace();
         }
        return false;
+    }
+
+    public static User getUser(String email){
+        Connection connection = MyDataSource.getConnection();
+        User user = null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from users where email = ?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("first_name"));
+                user.setSurname(resultSet.getString("last_name"));
+                user.setAge(Integer.parseInt(resultSet.getString("age")));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+                user.setVerify(resultSet.getString("verification_code"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 }
 

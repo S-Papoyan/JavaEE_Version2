@@ -23,6 +23,22 @@
         <servlet-name>InputEmailServlet</servlet-name>
         <servlet-class>com.digi.controller.InputEmailServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.digi.controller.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetInfoServlet</servlet-name>
+        <servlet-class>com.digi.controller.GetInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetInfoServlet</servlet-name>
+        <url-pattern>get-info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/change-password</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InputEmailServlet</servlet-name>
         <url-pattern>/inputEmail</url-pattern>

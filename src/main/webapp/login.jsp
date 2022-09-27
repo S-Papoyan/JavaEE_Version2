@@ -17,8 +17,16 @@
     String info = UserRepository.getInfo(user.toString());
     response.getWriter().write(info);
 %>
+
+
 <body>
 <br><br>
-<a href="address.jsp">add_address</a>
+<a href="address.jsp">add address</a><br><br>
+<a href="changePassword.jsp">change password</a><br><br>
+<a  href="get-info">get info</a><br><br>
+<form method="get" action="/">
+    <input type="button" name="logout">
+</form>
+
 </body>
 </html>
